@@ -101,7 +101,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                         child: CircleAvatar(
                           radius: 20,
                           backgroundImage: AssetImage('assets/image/ro.png'),
-                          
+
                           // backgroundColor: Colors.amber,
                         ),
                       ),
@@ -148,7 +148,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                                   ),
                                 ),
                                 Text(
-
                                   'Available',
                                   style: TextStyle(
                                     fontFamily: 'Poppin',
