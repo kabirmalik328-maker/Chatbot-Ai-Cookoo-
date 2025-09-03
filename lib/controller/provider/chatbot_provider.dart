@@ -4,19 +4,32 @@ import 'package:chat_bot/model/chatbot_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
-
-
 class ChatbotProvider extends ChangeNotifier {
   TextEditingController controller = TextEditingController();
   ChatbotModel? chatbotResponse;
+  bool isShowbutton = false;
+  bool isloading = false;
+  isShowloading(bool value) {
+    isloading = value;
+    notifyListeners();
+  }
 
+  isSendButtonVisible() {
+    if (controller.text.isEmpty) {
+      isShowbutton = false;
+    } else {
+      isShowbutton = true;
+    }
+    notifyListeners();
+  }
 
-// void clearResponse()async {
-//     chatbotResponse = null;
-//     notifyListeners();
-//   }
+  // void clearResponse()async {
+  //     chatbotResponse = null;
+  //     notifyListeners();
+  //   }
 
   sendMessage() async {
+    isShowloading(true);
     var headers = {
       'Content-Type': 'application/json',
       'X-goog-api-key': 'AIzaSyAxTdXIZ2CGC-fT9zcyW4uBrLrxpFdsR8k',
@@ -38,9 +51,10 @@ class ChatbotProvider extends ChangeNotifier {
       var response = jsonDecode(data.body);
       // print(data.body);
       chatbotResponse = ChatbotModel.fromJson(response);
+      controller.clear();
+      isSendButtonVisible();
+      isShowloading(false);
       notifyListeners();
-      
     }
   }
 }
-
