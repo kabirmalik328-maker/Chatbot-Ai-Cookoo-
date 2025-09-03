@@ -204,42 +204,35 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                             return SizedBox(
                               height: size.height * 0.7,
                               width: size.width * 0.60,
-                              child: ListView(
+                              child: ListView.builder(
                                 padding: const EdgeInsets.all(12),
-                                children: [
-                                  if (provider.chatbotResponse != null)
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(12),
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(
-                                            255,
-                                            246,
-                                            246,
-                                            255,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
+                                itemCount: provider.message.length,
+                                itemBuilder: (context, index) {
+                                  return Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Container(
+                                      padding: const EdgeInsets.all(12),
+                                      margin: const EdgeInsets.only(bottom: 14),
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(
+                                          255,
+                                          246,
+                                          246,
+                                          255,
                                         ),
-                                        child: Text(
-                                          provider
-                                              .chatbotResponse!
-                                              .candidates[0]
-                                              .content
-                                              .parts[0]
-                                              .text,
-                                          style: const TextStyle(
-                                            fontFamily: 'Poppin',
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                          ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Text(
+                                        provider.message[index],
+                                        style: const TextStyle(
+                                          fontFamily: 'Poppin',
+                                          color: Colors.black,
+                                          fontSize: 15,
                                         ),
                                       ),
                                     ),
-                                  // CustomTextfield(),
-                                ],
+                                  );
+                                },
                               ),
                             );
                           },
@@ -252,43 +245,36 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                           builder: (context, provider, child) {
                             return SizedBox(
                               height: size.height * 0.7,
-                              width: size.width * 0.96,
-                              child: ListView(
+                              width: size.width * 0.60,
+                              child: ListView.builder(
                                 padding: const EdgeInsets.all(12),
-                                children: [
-                                  if (provider.chatbotResponse != null)
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(12),
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(
-                                            255,
-                                            246,
-                                            246,
-                                            255,
-                                          ),
-
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
+                                itemCount: provider.message.length,
+                                itemBuilder: (context, index) {
+                                  return Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Container(
+                                      padding: const EdgeInsets.all(12),
+                                      margin: const EdgeInsets.only(bottom: 14),
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(
+                                          255,
+                                          246,
+                                          246,
+                                          255,
                                         ),
-                                        child: Text(
-                                          provider
-                                              .chatbotResponse!
-                                              .candidates[0]
-                                              .content
-                                              .parts[0]
-                                              .text,
-                                          style: const TextStyle(
-                                            fontFamily: 'Poppin',
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                          ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Text(
+                                        provider.message[index],
+                                        style: const TextStyle(
+                                          fontFamily: 'Poppin',
+                                          color: Colors.black,
+                                          fontSize: 15,
                                         ),
                                       ),
                                     ),
-                                ],
+                                  );
+                                },
                               ),
                             );
                           },

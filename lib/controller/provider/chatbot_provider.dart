@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
 class ChatbotProvider extends ChangeNotifier {
+  List message = [];
   TextEditingController controller = TextEditingController();
   ChatbotModel? chatbotResponse;
   bool isShowbutton = false;
@@ -51,8 +52,11 @@ class ChatbotProvider extends ChangeNotifier {
       var response = jsonDecode(data.body);
       // print(data.body);
       chatbotResponse = ChatbotModel.fromJson(response);
+
+      message.add(chatbotResponse!.candidates[0].content.parts[0].text);
       controller.clear();
       isSendButtonVisible();
+      // clearResponse();
       isShowloading(false);
       notifyListeners();
     }
